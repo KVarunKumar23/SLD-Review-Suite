@@ -1,0 +1,175 @@
+/* ═══════════════════════════════════════════════════════════
+   AI Analysis Panel Styles (Gemini Vision Inspector)
+   ═══════════════════════════════════════════════════════════ */
+
+.inspector-section.ai-section {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    margin: 4px 0 8px 0;
+    background: var(--bg-panel);
+}
+
+.inspector-section.ai-section .inspector-section-header {
+    background: var(--bg-input);
+    border-radius: 0;
+}
+
+/* Thinking / loading animation */
+.ai-thinking {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 4px;
+    color: var(--fg-dim);
+    font-size: 11px;
+}
+.ai-thinking-dots { display: flex; gap: 4px; }
+.ai-thinking-dots span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: ai-bounce 1.2s infinite ease-in-out;
+}
+.ai-thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+.ai-thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ai-bounce {
+    0%,80%,100% { transform: scale(0.6); opacity: 0.4; }
+    40%         { transform: scale(1.1); opacity: 1;   }
+}
+
+/* AI Summary + meta */
+.ai-summary {
+    background: var(--bg-deep);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 8px 10px;
+    font-size: 11px;
+    color: var(--fg-secondary);
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+.ai-drawing-meta {
+    font-size: 10px;
+    color: var(--fg-dim);
+    margin-bottom: 8px;
+    padding: 0 2px;
+}
+
+/* Element group block */
+.ai-group {
+    margin-bottom: 8px;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+.ai-group-header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 8px;
+    background: var(--bg-input);
+    border-left: 3px solid transparent;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--fg-secondary);
+    text-transform: uppercase;
+}
+.ai-type-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 5px;
+    border-radius: var(--border-radius-sm);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    min-width: 28px;
+}
+.ai-group-count {
+    margin-left: auto;
+    background: rgba(255,255,255,0.06);
+    border-radius: var(--border-radius-md);
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Individual element card */
+.ai-element-card {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+    background-color: var(--bg-panel);
+}
+.ai-element-card:last-child { border-bottom: none; }
+.ai-element-card:hover  { background: var(--bg-input); }
+.ai-element-card:active { background: var(--border-color); }
+
+/* Title block items are dimmed — they're metadata, not diagram elements */
+.ai-element-card.ai-titleblock {
+    opacity: 0.65;
+    background: rgba(250,204,21,0.03);
+}
+.ai-element-card.ai-titleblock:hover {
+    opacity: 0.9;
+    background: rgba(250,204,21,0.06);
+}
+
+.ai-el-label {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    font-family: 'Courier New', monospace;
+}
+.ai-el-spec {
+    font-size: 10px;
+    color: var(--fg-dim);
+    margin-top: 1px;
+    font-style: italic;
+}
+.ai-el-desc {
+    font-size: 10px;
+    color: var(--fg-dim);
+    margin-top: 2px;
+    line-height: 1.35;
+}
+.ai-circuit {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 3px;
+    flex-wrap: wrap;
+}
+.ai-circuit-node {
+    font-size: 9px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: 1px 5px;
+    color: var(--fg-secondary);
+    font-family: 'Courier New', monospace;
+}
+
+/* Analyze buttons */
+#btn-ai-analyze:hover:not(:disabled), #btn-ai-topology:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-0.5px);
+    transition: all 0.15s ease;
+}
+#btn-ai-analyze:disabled, #btn-ai-topology:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Style for Model Select dropdown and options */
+#gemini-model-select {
+    color: var(--fg-primary) !important;
+    background-color: var(--bg-deep) !important;
+}
+
+#gemini-model-select option {
+    background-color: var(--bg-deep) !important;
+    color: var(--fg-primary) !important;
+}
